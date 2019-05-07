@@ -11,7 +11,7 @@ print()
 print("=== All repositories Cloned ===")
 print()
 
-ado = AzureDevOps(project)
+ado = AzureDevOps(azuredevops_project)
 for (bitbucket_repo, git_repo) in repos:
     print('Creating {} repo on Azure DevOps'.format(bitbucket_repo.name))
     azure_repo = ado.create_repository(bitbucket_repo.name)

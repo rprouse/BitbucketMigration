@@ -12,7 +12,8 @@ from pybitbucket.auth import OAuth2Authenticator
 from pybitbucket.auth import BasicAuthenticator
 from pybitbucket.team import Team, TeamRole
 
-backup_dir = 'C:/Src/Reliq/Backup'
+# Set this to the directory that you want to use for your backups
+backup_dir = 'C:/Src/Backup'
 
 # Log into Bitbucket using credentials in ~/.bitbucketrc
 cfg = configparser.ConfigParser()

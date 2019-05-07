@@ -50,3 +50,19 @@ username = <username>
 password = <app_password>
 email = <email_address>
 ```
+
+### Azure
+
+1. Create a [personal access token](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts)
+2. Add the PAT and the Azure DevOps organization to `~/.azuredevopsrc`
+
+```
+[azuredevops]
+pat = <personal access token>
+organization = <organization uri>
+project = <project to use>
+```
+
+### Git
+
+This assumes you have git credentials cached and SSH keys setup

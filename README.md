@@ -36,3 +36,17 @@ or upgrading the existing packages. You must have activated your environment fir
 with `pip update packagename`
 2. Develop and test with the new package.
 3. Capture the package changes with `pip freeze > requirements.txt`
+
+## Authentication
+
+### Bitbucket
+
+1. Create an **App Password** with full access to Teams and Repos
+2. Add a file `~/.bitbucketrc` with the following
+
+```
+[bitbucket]
+username = <username>
+password = <app_password>
+email = <email_address>
+```

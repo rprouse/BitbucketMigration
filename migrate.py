@@ -6,8 +6,12 @@ import bitbucket
 backup_dir = 'C:/Src/Backup'
 
 repos = bitbucket.backup_repos(backup_dir)
-ado = AzureDevOps()
 
+print()
+print("=== All repositories Cloned ===")
+print()
+
+ado = AzureDevOps()
 for (bitbucket_repo, git_repo) in repos:
     print('Creating {} repo on Azure DevOps'.format(bitbucket_repo.name))
     azure_repo = ado.create_repository(bitbucket_repo.name)
@@ -15,4 +19,7 @@ for (bitbucket_repo, git_repo) in repos:
     assert remote.exists()
     print('Pushing {} to Azure DevOps'.format(bitbucket_repo.name))
     remote.push(refspec='refs/remotes/origin/*:refs/heads/*')
-    print()
+
+print()
+print("=== All repositories Pushed ===")
+print()

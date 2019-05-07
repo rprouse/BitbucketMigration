@@ -8,12 +8,11 @@ from paver.path import path
 
 class AzureDevOps():
     '''Work with Azure DevOps'''
-    def __init__(self):
+    def __init__(self, project):
         self.config = self.get_config()
 
         personal_access_token = self.config['azuredevops']['pat']
         organization_url = self.config['azuredevops']['organization']
-        project = self.config['azuredevops']['project']
 
         self.connection = self.login(personal_access_token, organization_url)
         self.git_client = self.connection.clients.get_git_client()

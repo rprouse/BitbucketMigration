@@ -1,9 +1,9 @@
 from azuredevops import AzureDevOps
-from pprint import pprint
 import bitbucket
 
 # Set this to the directory that you want to use for your backups
 backup_dir = 'C:/Src/Backup'
+azuredevops_project = 'Backup'
 
 repos = bitbucket.backup_repos(backup_dir)
 
@@ -11,7 +11,7 @@ print()
 print("=== All repositories Cloned ===")
 print()
 
-ado = AzureDevOps()
+ado = AzureDevOps(project)
 for (bitbucket_repo, git_repo) in repos:
     print('Creating {} repo on Azure DevOps'.format(bitbucket_repo.name))
     azure_repo = ado.create_repository(bitbucket_repo.name)

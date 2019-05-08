@@ -54,17 +54,8 @@ def backup_repos(backup_dir):
     backup_dir: The directory to clone the repos to
     returns: The repositories that were cloned
     '''
-    client = login()
-
-    # Find all the teams that I am an admin for
-    teams = Team.find_teams_for_role(role='admin', client=client)
-
     # Find all of the repos for the teams I am an admin for
-    repos = set()
-    for team in teams:
-        for repo in team.repositories():
-            if isinstance(repo, Repository):
-                repos.add(repo)
+    repos = get_repos()
 
     # Create the backup directory if it doesn't exist
     if not os.path.exists(backup_dir):
@@ -84,3 +75,22 @@ def backup_repos(backup_dir):
         retval.add((repo, git_repo))
 
     return retval
+
+def get_repos():
+    '''
+    Gets all Bitbucket repositories from all the teams that the user
+    is an admin for to the to the given backup directory
+    '''
+    client = login()
+
+    # Find all the teams that I am an admin for
+    teams = Team.find_teams_for_role(role='admin', client=client)
+
+    # Find all of the repos for the teams I am an admin for
+    repos = set()
+    for team in teams:
+        for repo in team.repositories():
+            if isinstance(repo, Repository):
+                repos.add(repo)
+
+    return repos
